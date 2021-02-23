@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.8" client="site" method="upgrade">
+	<name>List of Notars</name>
+	<creationDate>February 2021</creationDate>
+	<author>nx-designs</author>
+	<authorEmail>support@nx-designs.ch</authorEmail>
+	<authorUrl>http://www.nx-designs.ch</authorUrl>
+	<copyright>Copyright© 2021 by nx-designs</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<version>1.0</version>
+	<description>MOD_LIST_OF_NOTARS_XML_DESCRIPTION</description>
+
+	<files>
+		<filename module="mod_list_of_notars">mod_list_of_notars.php</filename>
+		<folder>tmpl</folder>
+		<folder>language</folder>
+		<filename>helper.php</filename>
+		<filename>mod_list_of_notars.xml</filename>
+	</files>
+
+	<!-- Update servers -->
+	<updateservers>
+		<server type="extension" priority="1" name="mod_list_of_notars">https://updates.nx-designs.ch/extensions/notarmanager/mod_list_of_notars.xml</server>
+	</updateservers>
+
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="sort_by"
+					   type="list"
+					   default="b.name"
+					   label="MOD_LON_TBL_SORTBY" description="MOD_LON_TBL_SORTBY_DES">
+					<option value="b.name">Name</option>
+					<option value="b.ordering">Ordering</option>
+					<option value="b.examdate">Exam Date</option>
+					<option value="a.active_from">Active from</option>
+					<option value="a.active_till">Active till</option>
+					<option value="b.created">Created</option>
+					<option value="b.modified">Modified</option>
+				</field>
+				<field name="sort_dir"
+					   type="radio"
+					   default="asc"
+					   class="btn-group"
+					   label="MOD_LON_TBL_SORT_DIR" description="MOD_LON_TBL_SORT_DIR_DES">
+					<option value="asc">ASC</option>
+					<option value="desc">DESC</option>
+				</field>
+				<field name="table_attributes"
+					   filter="safehtml"
+					   type="textarea"
+					   rows="3"
+					   label="MOD_LON_TBL_ATTR" description="MOD_LON_TBL_ATTR_DES"
+				/>
+				<field name="table_classes"
+					   filter="safehtml"
+					   type="textarea"
+					   rows="3"
+					   label="MOD_LON_TBL_CLS" description="MOD_LON_TBL_CLS_DES"
+				/>
+				<field name="tbl_sorting"
+					   type="radio"
+					   filter="integer"
+					   default="0"
+					   class="btn-group btn-group-yesno"
+					   label="MOD_LON_TBL_SORT" description="MOD_LON_TBL_SORT_DES">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="show_lastupdated"
+					   type="radio"
+					   filter="integer"
+					   default="0"
+					   class="btn-group btn-group-yesno"
+					   label="MOD_LON_SHOWLAST_UPDATED" description="MOD_LON_SHOWLAST_UPDATED_DES"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="last_updated_txt"
+					   showon="show_lastupdated:1"
+					   type="text"
+					   default="Last updated: %date"
+					   hint="Last updated: %date"
+					   filter="safehtml"
+					   label="MOD_LON_SHOWLAST_UPDATED_TXT" description="MOD_LON_SHOWLAST_UPDATED_TXT_DES"
+				/>
+				<field type="spacer" hr="true" name="basicsspacer"/>
+
+				<field name="field_classes"
+					   filter="safehtml"
+					   type="textarea"
+					   rows="3"
+					   label="MOD_LON_FIELD_CLS" description="MOD_LON_FIELD_CLS_DES"
+				/>
+
+				<field name="sp_name" type="spacer" label="Name Column" />
+				<field name="col_title_name"
+					   filter="safehtml"
+					   type="text"
+					   default="Name / Anschrift"
+					   label="MOD_LON_NAME_COL_TITLE" description=""
+				/>
+				<field name="col_cls_name"
+					   filter="safehtml"
+					   type="textarea"
+					   rows="3"
+					   label="MOD_LON_COLHEADER_CLS" description="MOD_LON_FIELD_CLS_DES"
+				/>
+				<field name="field_classes_name"
+					   filter="safehtml"
+					   type="textarea"
+					   rows="3"
+					   label="MOD_LON_NAME_FIELD_CLS" description="MOD_LON_FIELD_CLS_DES"
+				/>
+
+				<field name="sp_bday" type="spacer" label="Birthday Column" />
+				<field name="col_title_birthday"
+					   filter="safehtml"
+					   type="text"
+					   default="Geburtsjahr"
+					   label="MOD_LON_BDAY_COL_TITLE" description=""
+				/>
+				<field name="col_cls_birthday"
+					   filter="safehtml"
+					   type="textarea"
+					   rows="3"
+					   label="MOD_LON_COLHEADER_CLS" description="MOD_LON_FIELD_CLS_DES"
+				/>
+				<field name="field_classes_birthday"
+					   filter="safehtml"
+					   type="textarea"
+					   rows="3"
+					   label="MOD_LON_BDAY_FIELD_CLS" description="MOD_LON_FIELD_CLS_DES"
+				/>
+
+				<field name="sp_exam" type="spacer" label="Exam Column" />
+				<field name="col_title_exam"
+					   filter="safehtml"
+					   type="text"
+					   default="Notariatsprüfung"
+					   label="MOD_LON_EXAM_COL_TITLE" description=""
+				/>
+				<field name="col_cls_exam"
+					   filter="safehtml"
+					   type="textarea"
+					   rows="3"
+					   label="MOD_LON_COLHEADER_CLS" description="MOD_LON_FIELD_CLS_DES"
+				/>
+				<field name="field_classes_exam"
+					   filter="safehtml"
+					   type="textarea"
+					   rows="3"
+					   label="MOD_LON_EXAM_FIELD_CLS" description="MOD_LON_FIELD_CLS_DES"
+				/>
+
+				<field name="sp_from" type="spacer" label="From Column" />
+				<field name="col_title_from"
+					   filter="safehtml"
+					   type="text"
+					   default="Eintragung"
+					   label="MOD_LON_FROM_COL_TITLE" description=""
+				/>
+				<field name="col_cls_from"
+					   filter="safehtml"
+					   type="textarea"
+					   rows="3"
+					   label="MOD_LON_COLHEADER_CLS" description="MOD_LON_FIELD_CLS_DES"
+				/>
+				<field name="field_classes_from"
+					   filter="safehtml"
+					   type="textarea"
+					   rows="3"
+					   label="MOD_LON_FROM_FIELD_CLS" description="MOD_LON_FIELD_CLS_DES"
+				/>
+				<field name="sp_till" type="spacer" label="Till Column" />
+				<field name="col_title_till"
+					   filter="safehtml"
+					   type="text"
+					   default="Löschung"
+					   label="MOD_LON_TILL_COL_TITLE" description=""
+				/>
+				<field name="col_cls_till"
+					   filter="safehtml"
+					   type="textarea"
+					   rows="3"
+					   label="MOD_LON_COLHEADER_CLS" description="MOD_LON_FIELD_CLS_DES"
+				/>
+				<field name="field_classes_till"
+					   filter="safehtml"
+					   type="textarea"
+					   rows="3"
+					   label="MOD_LON_TILL_FIELD_CLS" description="MOD_LON_FIELD_CLS_DES"
+				/>
+			</fieldset>
+			<fieldset name="custom_rules">
+				<field name="rules"
+					   type="subform"
+					   label=""
+					   multiple="true"
+				>
+					<form>
+						<field name="rule_target"
+							   type="list"
+							   default="name"
+							   label="MOD_LON_RULETARGET"
+						>
+							<option value="name">Name</option>
+							<option value="street">Street</option>
+							<option value="zip">ZIP</option>
+							<option value="town">Town</option>
+							<option value="examdate">Exam date</option>
+							<option value="birthday_year">Birthday</option>
+							<option value="active_from">Active from</option>
+							<option value="active_till">Active till</option>
+						</field>
+						<field name="rule_type"
+							   type="list"
+							   default="replace"
+							   label="MOD_LON_RULETYPE"
+						>
+							<option value="replace">Replace</option>
+						</field>
+						<field name="rule_replace_what"
+							   showon="rule_type:replace"
+							   type="text"
+							   filter="safehtml"
+							   label="MOD_LON_RULE_REPLACE_WHAT"
+						/>
+						<field name="rule_replace_with"
+							   showon="rule_type:replace"
+							   type="text"
+							   filter="safehtml"
+							   label="MOD_LON_RULE_REPLACE_WITH"
+						/>
+					</form>
+				</field>
+			</fieldset>
+			<fieldset name="advanced">
+				<field name="uikit"
+					   type="folderlist"
+					   recursive="false"
+					   directory="modules/mod_list_of_notars/tmpl/assets/uikit"
+					   hide_none="false"
+					   hide_default="true"
+					   label="MOD_LON_CUSTOM_UIKIT" description="MOD_LON_CUSTOM_UIKIT_DES"
+				/>
+				<field name="responsive_table"
+					   type="radio"
+					   filter="integer"
+					   default="1"
+					   class="btn-group btn-group-yesno"
+					   label="MOD_LON_TBL_RESP" description="MOD_LON_TBL_RESP_DES"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="debug"
+					   type="radio"
+					   filter="integer"
+					   default="0"
+					   class="btn-group btn-group-yesno"
+					   label="Debug" description="Show Debug information"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field
+						name="moduleclass_sfx"
+						type="text"
+						label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+						description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+			</fieldset>
+		</fields>
+	</config>
+</extension>

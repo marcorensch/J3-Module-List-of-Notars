@@ -33,7 +33,7 @@ class ModListOfNotarsHelper{
         $timezone = Factory::getUser()->getTimezone();
         $date->setTimezone($timezone);
 
-        $sorting = $params->get('sort_by','name') . ' ' . $params->get('sort_dir','ASC');
+        $sorting = $params->get('sort_by','b.lastname') . ' ' . $params->get('sort_dir','ASC');
 
         $db = Factory::getDbo();
 
@@ -55,13 +55,14 @@ class ModListOfNotarsHelper{
         )
         ->andWhere(
             [
-                $db->quoteName('a.active_till') . ' = ' . $db->quote('') ,
+                $db->quoteName('a.active_till') . ' = ' . $db->quote('0000-00-00 00:00:00') ,
                 $db->quoteName('a.active_till') . ' > ' . $db->quote($date->toSQL())
             ]
         );
-        $query->group($db->quoteName('a.id'));
+
         $query->order($sorting);
 
+        if($params->get('debug-query',0)) echo '<pre>' . var_export($query->dump(),1) . '</pre>';
         if($params->get('debug',0)) echo '<pre>' . var_export($sorting,1) . '</pre>';
 
         $db->setQuery($query);
@@ -103,7 +104,6 @@ class ModListOfNotarsHelper{
 
     private static function customRules(&$notars, $params){
         $rules = $params->get('rules',array());
-        if($params->get('debug',0)) echo '<pre>' . var_export($rules,1) . '</pre>';
         foreach($rules as $rule){
             $trgt = $rule->rule_target;
             foreach($notars as $notar){

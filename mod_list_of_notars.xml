@@ -122,7 +122,6 @@
 				<field name="col_title_birthday"
 					   filter="safehtml"
 					   type="text"
-					   default="Geburtsjahr"
 					   label="MOD_LON_BDAY_COL_TITLE" description=""
 				/>
 				<field name="col_cls_birthday"
@@ -142,7 +141,6 @@
 				<field name="col_title_exam"
 					   filter="safehtml"
 					   type="text"
-					   default="Notariatsprüfung"
 					   label="MOD_LON_EXAM_COL_TITLE" description=""
 				/>
 				<field name="col_cls_exam"
@@ -162,7 +160,6 @@
 				<field name="col_title_from"
 					   filter="safehtml"
 					   type="text"
-					   default="Eintragung"
 					   label="MOD_LON_FROM_COL_TITLE" description=""
 				/>
 				<field name="col_cls_from"
@@ -181,7 +178,6 @@
 				<field name="col_title_till"
 					   filter="safehtml"
 					   type="text"
-					   default="Löschung"
 					   label="MOD_LON_TILL_COL_TITLE" description=""
 				/>
 				<field name="col_cls_till"
@@ -209,7 +205,10 @@
 							   default="name"
 							   label="MOD_LON_RULETARGET"
 						>
-							<option value="name">Name</option>
+							<option value="title">Title</option>
+							<option value="firstname">Firstname</option>
+							<option value="lastname">Lastname</option>
+							<option value="company">Company</option>
 							<option value="street">Street</option>
 							<option value="zip">ZIP</option>
 							<option value="town">Town</option>
@@ -265,6 +264,26 @@
 					   default="0"
 					   class="btn-group btn-group-yesno"
 					   label="Debug" description="Show Debug information"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="debug-rules"
+					   type="radio"
+					   filter="integer"
+					   default="0"
+					   class="btn-group btn-group-yesno"
+					   label="Debug Rules" description="Show Debug information for rules"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="debug-query"
+					   type="radio"
+					   filter="integer"
+					   default="0"
+					   class="btn-group btn-group-yesno"
+					   label="Debug Query" description="Show Debug information for db query"
 				>
 					<option value="0">JNO</option>
 					<option value="1">JYES</option>

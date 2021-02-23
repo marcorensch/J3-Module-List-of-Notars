@@ -58,6 +58,10 @@ if($params->get('tbl_sorting',1)){
 }
 
 
+$rules = $params->get('rules',array());
+if($params->get('debug-rules',0)) echo '<pre>' . var_export($rules,1) . '</pre>';
+
+
 $notars = ModListOfNotarsHelper::getActiveNotars($params);
 if($params->get('show_lastupdated',1)) {
     $lastChange = ModListOfNotarsHelper::getLastChange($notars, $params);

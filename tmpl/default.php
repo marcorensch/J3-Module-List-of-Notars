@@ -42,10 +42,11 @@ $onclick = '';      // will be filled with JS onclick in foreach when active
                             $onclick = "onclick='sortTable($i, \"$tableId\", this)'";
                         }
                         ?>
-
-                        <th <?php echo $onclick;?> class="noselect <?php echo htmlspecialchars($params->get('col_cls_'.$column,''));?>">
-                            <?php echo htmlspecialchars($params->get('col_title_'.$column,''));?>
-                        </th>
+                        <?php if(strlen($params->get('col_title_'.$column,''))):?>
+                            <th <?php echo $onclick;?> class="noselect <?php echo htmlspecialchars($params->get('col_cls_'.$column,''));?>">
+                                <?php echo htmlspecialchars($params->get('col_title_'.$column,''));?>
+                            </th>
+                        <?php endif;?>
                     <?php
                     $i++;
                     endforeach;?>
@@ -53,7 +54,8 @@ $onclick = '';      // will be filled with JS onclick in foreach when active
             </thead>
             <tbody>
             <?php
-            foreach($notars as $notar):
+            if($notars && count($notars)):
+                foreach($notars as $notar):
                 ?>
                 <tr>
                     <td class="<?php echo $fieldCls . ' ' . $nameCls;?>">
@@ -69,22 +71,34 @@ $onclick = '';      // will be filled with JS onclick in foreach when active
                         <?php if(strlen($notar->email)) echo '<br><span class="notar-email">'.$notar->email.'</span>';?>
                         <?php if(strlen($notar->website)) echo '<br><a href="'.$notar->website.'" target="_blank" title="Website '.$notar->name.'" class="notar-website">'.$notar->website.'</a>';?>
                     </td>
+                    <?php if(strlen($params->get('col_title_birthday',''))):?>
                     <td class="<?php echo $fieldCls . ' ' . $bdayCls;?>">
                         <span class="notar-birthday"><?php echo $notar->birthday_year;?></span>
                     </td>
+                    <?php endif; ?>
+                    <?php if(strlen($params->get('col_title_exam',''))):?>
                     <td class="<?php echo $fieldCls . ' ' . $examCls;?>">
                         <span class="notar-exam"><?php echo HtmlHelper::date($notar->examdate, 'd.m.Y');?></span>
                     </td>
+                    <?php endif; ?>
+                    <?php if(strlen($params->get('col_title_from',''))):?>
                     <td class="<?php echo $fieldCls . ' ' . $fromCls;?>">
                         <span class="notar-from"><?php echo HtmlHelper::date($notar->active_from, 'd.m.Y');?></span>
                     </td>
+                    <?php endif; ?>
+                    <?php if(strlen($params->get('col_title_till',''))):?>
                     <td class="<?php echo $fieldCls . ' ' . $tillCls;?>">
                         <?php
-                        if(strlen($notar->active_till)) echo '<span class="notar-till">'.HtmlHelper::date($notar->active_till, 'd.m.Y') . '</span>';?>
+                            echo '<span class="notar-till">';
+                                if(strlen($notar->active_till) && $notar->active_till !== '0000-00-00 00:00:00') echo HtmlHelper::date($notar->active_till, 'd.m.Y');
+                            echo '</span>';
+                        ?>
                     </td>
+                    <?php endif; ?>
                 </tr>
             <?php
             endforeach;
+            endif;
             ?>
             </tbody>
             <?php if($params->get('show_lastupdated',1)):?>

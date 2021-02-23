@@ -57,7 +57,12 @@ $onclick = '';      // will be filled with JS onclick in foreach when active
                 ?>
                 <tr>
                     <td class="<?php echo $fieldCls . ' ' . $nameCls;?>">
-                        <span class="notar-name"><?php echo $notar->name;?></span><br>
+                        <span class="notar-name">
+                            <span class="notar-title"><?php echo $notar->title;?> </span>
+                            <span class="notar-firstname"><?php echo $notar->firstname;?> </span>
+                            <span class="notar-lastname"><?php echo $notar->lastname;?></span>
+                        </span><br>
+                        <?php if (strlen($notar->phone)) echo '<span class="notar-company">'.$notar->company.'</span><br>';?>
                         <span class="notar-street"><?php echo $notar->street;?></span><br>
                         <span class="notar-zip"><?php echo $notar->zip;?></span>&nbsp;<span class="notar-town"><?php echo $notar->town;?></span>
                         <?php if(strlen($notar->phone)) echo '<br><span class="notar-phone">'.$notar->phone.'</span>';?>

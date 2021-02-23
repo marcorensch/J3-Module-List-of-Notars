@@ -31,6 +31,10 @@
 					   default="b.name"
 					   label="MOD_LON_TBL_SORTBY" description="MOD_LON_TBL_SORTBY_DES">
 					<option value="b.name">Name</option>
+					<option value="b.firstname">Firstname</option>
+					<option value="b.lastname">Lastname</option>
+					<option value="b.name">Name</option>
+					<option value="b.company">Company</option>
 					<option value="b.ordering">Ordering</option>
 					<option value="b.examdate">Exam Date</option>
 					<option value="a.active_from">Active from</option>

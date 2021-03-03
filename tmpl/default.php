@@ -69,7 +69,7 @@ $onclick = '';      // will be filled with JS onclick in foreach when active
                         <span class="notar-zip"><?php echo $notar->zip;?></span>&nbsp;<span class="notar-town"><?php echo $notar->town;?></span>
                         <?php if(strlen($notar->phone)) echo '<br><span class="notar-phone">'.$notar->phone.'</span>';?>
                         <?php if(strlen($notar->email)) echo '<br><span class="notar-email">'.$notar->email.'</span>';?>
-                        <?php if(strlen($notar->website)) echo '<br><a href="'.$notar->website.'" target="_blank" title="Website '.$notar->name.'" class="notar-website">'.$notar->website.'</a>';?>
+                        <?php if(strlen($notar->website)) echo '<br><a href="'.$notar->website.'" target="_blank" title="Website '.$notar->lastname.'" class="notar-website">'.$notar->website.'</a>';?>
                     </td>
                     <?php if(strlen($params->get('col_title_birthday',''))):?>
                     <td class="<?php echo $fieldCls . ' ' . $bdayCls;?>">

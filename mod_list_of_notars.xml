@@ -25,10 +25,10 @@
 	</updateservers>
 
 	<languages>
-		<language tag="en-GB">en-GB.mod_list_of_notars.ini</language>
-		<language tag="en-GB">en-GB.mod_list_of_notars.sys.ini</language>
-		<language tag="de-DE">de-DE.mod_list_of_notars.ini</language>
-		<language tag="de-DE">de-DE.mod_list_of_notars.sys.ini</language>
+		<language tag="en-GB">language/en-GB/en-GB.mod_list_of_notars.ini</language>
+		<language tag="en-GB">language/en-GB/en-GB.mod_list_of_notars.sys.ini</language>
+		<language tag="de-DE">language/de-DE/de-DE.mod_list_of_notars.ini</language>
+		<language tag="de-DE">language/de-DE/de-DE.mod_list_of_notars.sys.ini</language>
 	</languages>
 
 	<config>

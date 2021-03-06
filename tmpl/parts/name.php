@@ -11,12 +11,13 @@
 use Joomla\CMS\HTML\HTMLHelper;
 
 defined('_JEXEC') or die;
-
-$active_column = $col->column;
-$date = HtmlHelper::date($notar->$active_column, 'd.m.Y');
-if(strlen($notar->$active_column)):
+if(strlen($notar->firstname) || strlen($notar->lastname)):
 ?>
 
-<span class="notar-<?php echo $col->column;?>"><?php echo $date;?></span>
+<div class="notar-name">
+    <span class="notar-title"><?php echo $notar->title;?> </span>
+    <span class="notar-firstname"><?php echo $notar->firstname;?> </span>
+    <span class="notar-lastname"><?php echo $notar->lastname;?></span>
+</div>
 
 <?php endif;?>

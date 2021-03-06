@@ -14,6 +14,9 @@ defined('_JEXEC') or die;
 
 $active_column = $col->column;
 
+if(strlen($notar->$active_column)):
 ?>
 
 <span class="notar-<?php echo $col->column;?>"><?php echo $notar->$active_column;?></span>
+
+<?php endif; ?>

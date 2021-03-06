@@ -16,12 +16,21 @@ $active_column = $col->column;
 
 if(property_exists($col,'button') && $col->button){
     $btnCls = 'uk-button uk-button-'. $col->buttonsize . ' uk-button-'.$col->buttonstyle;
-    $lbl = \Joomla\CMS\Language\Text::_('SEND_EMAIL_TO_NOTAR');
+    if($col->icon_button){
+        $lbl = '<i uk-icon="icon: world" class="uk-preserve-width"></i>';
+    }else{
+        $lbl = \Joomla\CMS\Language\Text::_('WEBSITE_NOTAR');
+    }
+
 }else{
     $btnCls = '';
     $lbl = $notar->$active_column;
 }
-$html = '<a class="'.$btnCls.'" href="mailto:'.$notar->$active_column.'">' .$lbl. '</a>';
+$html = '<a target="_blank" class="uk-text-nowrap '.$btnCls.'" href="'.$notar->$active_column.'">' .$lbl. '</a>';
+
+if(strlen($notar->$active_column)):
 ?>
 
-<span class="notar-<?php echo $col->column;?>"><?php echo $notar->$active_column;?></span>
+<span class="notar-<?php echo $col->column;?>"><?php echo $html;?></span>
+
+<?php endif;?>

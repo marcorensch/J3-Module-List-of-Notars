@@ -13,20 +13,9 @@ use Joomla\CMS\HTML\HTMLHelper;
 defined('_JEXEC') or die;
 
 $active_column = $col->column;
-
-if(property_exists($col,'button') && $col->button){
-    $btnCls = 'uk-button uk-button-'. $col->buttonsize . ' uk-button-'.$col->buttonstyle;
-    if($col->icon_button){
-        $lbl = '<i uk-icon="icon: mail" class="uk-preserve-width"></i>';
-    }else {
-        $lbl = \Joomla\CMS\Language\Text::_('SEND_EMAIL_TO_NOTAR');
-    }
-}else{
-    $btnCls = '';
-    $lbl = $notar->$active_column;
-}
-$html = '<a class="uk-text-nowrap  '.$btnCls.'" href="mailto:'.$notar->$active_column.'">' .$lbl. '</a>';
 if(strlen($notar->$active_column)):
+    $html = '<a class="uk-text-nowrap" href="tel:'.$notar->$active_column.'">' .$notar->$active_column. '</a>';
+
     ?>
     <span class="notar-<?php echo $col->column;?>"><?php echo $html;?></span>
 <?php endif;?>

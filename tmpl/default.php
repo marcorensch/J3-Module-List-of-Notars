@@ -17,12 +17,11 @@ defined('_JEXEC') or die;
 // echo '<pre>' . var_export($notars,1) . '</pre>';
 
 $columns = $params->get('columns',array());
-echo '<pre>' . var_export($columns,1) . '</pre>';
 $onclick = '';      // will be filled with JS onclick in foreach when active
 
 $stacked = $params->get('responsive_table','stacked') === 'stacked' ? 'uk-table-responsive' : '';
 
-$simpleTemplates = array('title','firstname','lastname','phone','birthday_year','company');
+$simpleTemplates = array('title','firstname','lastname','street','birthday_year','company');
 
 ?>
 <div class="uk-scope">
@@ -58,14 +57,13 @@ $simpleTemplates = array('title','firstname','lastname','phone','birthday_year',
                         <tr>
                             <?php foreach ($columns as $col): ?>
                             <td class="<?php echo htmlspecialchars($col->field_classes);?>">
-                                <?php if(in_array($col->column, $simpleTemplates)){
-                                    $active_column = $col->column;
-                                    if(strlen($notar->$active_column)){
-                                        include 'parts/simple.php';
-                                    }
-                                }else{
-                                    include 'parts/'.$col->column.'.php';
-                                }?>
+                                <?php
+                                if (in_array($col->column, $simpleTemplates)) {
+                                    include 'parts/simple.php';
+                                } else {
+                                    include 'parts/' . $col->column . '.php';
+                                }
+                                ?>
                             </td>
                             <?php endforeach; ?>
                         </tr>

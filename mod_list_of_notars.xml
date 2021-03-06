@@ -13,6 +13,7 @@
 	<files>
 		<filename module="mod_list_of_notars">mod_list_of_notars.php</filename>
 		<folder>tmpl</folder>
+		<folder>models</folder>
 		<folder>language</folder>
 		<filename>helper.php</filename>
 		<filename>mod_list_of_notars.xml</filename>
@@ -22,6 +23,13 @@
 	<updateservers>
 		<server type="extension" priority="1" name="mod_list_of_notars">https://updates.nx-designs.ch/extensions/notarmanager/mod_list_of_notars.xml</server>
 	</updateservers>
+
+	<languages>
+		<language tag="en-GB">en-GB.mod_list_of_notars.ini</language>
+		<language tag="en-GB">en-GB.mod_list_of_notars.sys.ini</language>
+		<language tag="de-DE">de-DE.mod_list_of_notars.ini</language>
+		<language tag="de-DE">de-DE.mod_list_of_notars.sys.ini</language>
+	</languages>
 
 	<config>
 		<fields name="params">
@@ -100,7 +108,6 @@
 
 			</fieldset>
 			<fieldset name="columns_tab">
-
 				<field name="columns"
 					   type="subform"
 					   multiple="true"

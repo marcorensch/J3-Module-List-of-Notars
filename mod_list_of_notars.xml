@@ -25,7 +25,7 @@
 
 	<config>
 		<fields name="params">
-			<fieldset name="basic">
+			<fieldset name="basic" addfieldpath="">
 				<field name="sort_by"
 					   type="list"
 					   default="b.name"
@@ -89,109 +89,26 @@
 					   filter="safehtml"
 					   label="MOD_LON_SHOWLAST_UPDATED_TXT" description="MOD_LON_SHOWLAST_UPDATED_TXT_DES"
 				/>
-				<field type="spacer" hr="true" name="basicsspacer"/>
+				<field name="responsive_table"
+					   type="list"
+					   default="stacked"
+					   label="MOD_LON_TBL_RESP" description="MOD_LON_TBL_RESP_DES"
+				>
+					<option value="overflow"></option>
+					<option value="stacked"></option>
+				</field>
 
-				<field name="field_classes"
-					   filter="safehtml"
-					   type="textarea"
-					   rows="3"
-					   label="MOD_LON_FIELD_CLS" description="MOD_LON_FIELD_CLS_DES"
-				/>
+			</fieldset>
+			<fieldset name="columns_tab">
 
-				<field name="sp_name" type="spacer" label="Name Column" />
-				<field name="col_title_name"
-					   filter="safehtml"
-					   type="text"
-					   default="Name / Anschrift"
-					   label="MOD_LON_NAME_COL_TITLE" description=""
-				/>
-				<field name="col_cls_name"
-					   filter="safehtml"
-					   type="textarea"
-					   rows="3"
-					   label="MOD_LON_COLHEADER_CLS" description="MOD_LON_FIELD_CLS_DES"
-				/>
-				<field name="field_classes_name"
-					   filter="safehtml"
-					   type="textarea"
-					   rows="3"
-					   label="MOD_LON_NAME_FIELD_CLS" description="MOD_LON_FIELD_CLS_DES"
+				<field name="columns"
+					   type="subform"
+					   multiple="true"
+					   formsource="modules/mod_list_of_notars/models/forms/columns.xml"
+					   min="1"
+					   label="" description=""
 				/>
 
-				<field name="sp_bday" type="spacer" label="Birthday Column" />
-				<field name="col_title_birthday"
-					   filter="safehtml"
-					   type="text"
-					   label="MOD_LON_BDAY_COL_TITLE" description=""
-				/>
-				<field name="col_cls_birthday"
-					   filter="safehtml"
-					   type="textarea"
-					   rows="3"
-					   label="MOD_LON_COLHEADER_CLS" description="MOD_LON_FIELD_CLS_DES"
-				/>
-				<field name="field_classes_birthday"
-					   filter="safehtml"
-					   type="textarea"
-					   rows="3"
-					   label="MOD_LON_BDAY_FIELD_CLS" description="MOD_LON_FIELD_CLS_DES"
-				/>
-
-				<field name="sp_exam" type="spacer" label="Exam Column" />
-				<field name="col_title_exam"
-					   filter="safehtml"
-					   type="text"
-					   label="MOD_LON_EXAM_COL_TITLE" description=""
-				/>
-				<field name="col_cls_exam"
-					   filter="safehtml"
-					   type="textarea"
-					   rows="3"
-					   label="MOD_LON_COLHEADER_CLS" description="MOD_LON_FIELD_CLS_DES"
-				/>
-				<field name="field_classes_exam"
-					   filter="safehtml"
-					   type="textarea"
-					   rows="3"
-					   label="MOD_LON_EXAM_FIELD_CLS" description="MOD_LON_FIELD_CLS_DES"
-				/>
-
-				<field name="sp_from" type="spacer" label="From Column" />
-				<field name="col_title_from"
-					   filter="safehtml"
-					   type="text"
-					   label="MOD_LON_FROM_COL_TITLE" description=""
-				/>
-				<field name="col_cls_from"
-					   filter="safehtml"
-					   type="textarea"
-					   rows="3"
-					   label="MOD_LON_COLHEADER_CLS" description="MOD_LON_FIELD_CLS_DES"
-				/>
-				<field name="field_classes_from"
-					   filter="safehtml"
-					   type="textarea"
-					   rows="3"
-					   label="MOD_LON_FROM_FIELD_CLS" description="MOD_LON_FIELD_CLS_DES"
-				/>
-				<field name="sp_till" type="spacer" label="Till Column" />
-				<field name="col_title_till"
-					   filter="safehtml"
-					   type="text"
-					   label="MOD_LON_TILL_COL_TITLE" description=""
-				/>
-				<field name="col_cls_till"
-					   filter="safehtml"
-					   type="textarea"
-					   rows="3"
-					   label="MOD_LON_COLHEADER_CLS" description="MOD_LON_FIELD_CLS_DES"
-				/>
-				<field name="field_classes_till"
-					   filter="safehtml"
-					   type="textarea"
-					   rows="3"
-					   label="MOD_LON_TILL_FIELD_CLS" description="MOD_LON_FIELD_CLS_DES"
-				/>
 			</fieldset>
 			<fieldset name="custom_rules">
 				<field name="rules"
@@ -248,16 +165,7 @@
 					   hide_default="true"
 					   label="MOD_LON_CUSTOM_UIKIT" description="MOD_LON_CUSTOM_UIKIT_DES"
 				/>
-				<field name="responsive_table"
-					   type="radio"
-					   filter="integer"
-					   default="1"
-					   class="btn-group btn-group-yesno"
-					   label="MOD_LON_TBL_RESP" description="MOD_LON_TBL_RESP_DES"
-				>
-					<option value="0">JNO</option>
-					<option value="1">JYES</option>
-				</field>
+
 				<field name="debug"
 					   type="radio"
 					   filter="integer"

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <field name="column"
+           type="list"
+           default="name-combined"
+           label="MOD_LON_COL_LBL" description="MOD_LON_COL_DES"
+    >
+        <option value="name-combined">MOD_LON_COL_NAME_COM</option>
+        <option value="title">MOD_LON_COL_TITLE_OPT</option>
+        <option value="firstname">MOD_LON_COL_FNAME</option>
+        <option value="lastname">MOD_LON_COL_LNAME</option>
+        <option value="company">MOD_LON_COL_COMPANY</option>
+        <option value="phone">MOD_LON_COL_PHONE</option>
+        <option value="email">MOD_LON_COL_MAIL</option>
+        <option value="website">MOD_LON_COL_WEB</option>
+        <option value="birthday_year">MOD_LON_COL_BDAY</option>
+        <option value="examdate">MOD_LON_COL_EXAM</option>
+        <option value="active_from">MOD_LON_COL_FROM</option>
+        <option value="active_till">MOD_LON_COL_TILL</option>
+    </field>
+    <field name="column_title"
+           filter="safehtml"
+           type="text"
+           hint="Name"
+           label="MOD_LON_COL_TITLE" description=""
+    />
+    <field name="button"
+           showon="column:email,website"
+           type="radio"
+           default="1"
+           class="btn-group btn-group-yesno"
+           filter="integer"
+           label="MOD_LON_BTN_LINK" description="MOD_LON_BTN_LINK_DES"
+    >
+        <option value="0">JNO</option>
+        <option value="1">JYEs</option>
+    </field>
+    <field name="buttonsize"
+           showon="column:email,website[AND]button:1"
+           type="list"
+           default="medium"
+           label="MOD_LON_BTN_SIZE" description=""
+    >
+        <option value="small"></option>
+        <option value="medium"></option>
+        <option value="large"></option>
+    </field>
+    <field name="buttonstyle"
+           showon="column:email,website[AND]button:1"
+           type="list"
+           default="default"
+           label="MOD_LON_BTN_STYLE" description=""
+    >
+        <option value="default"></option>
+        <option value="primary"></option>
+        <option value="secondary"></option>
+        <option value="text"></option>
+        <option value="link"></option>
+        <option value="custom"></option>
+    </field>
+    <field name="col_cls"
+           filter="safehtml"
+           type="textarea"
+           rows="3"
+           label="MOD_LON_COLHEADER_CLS" description="MOD_LON_FIELD_CLS_DES"
+    />
+    <field name="field_classes"
+           filter="safehtml"
+           type="textarea"
+           rows="3"
+           label="MOD_LON_FIELD_CLS" description="MOD_LON_FIELD_CLS_DES"
+    />
+</form>

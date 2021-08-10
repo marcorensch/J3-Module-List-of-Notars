@@ -24,6 +24,8 @@ $stacked = $params->get('responsive_table','stacked') === 'stacked' ? 'uk-table-
 
 $simpleTemplates = array('title','firstname','lastname','street','birthday_year','company');
 
+$lastUpdatedDate = new Date($params->get('last_updated_date','2012-12-1 15:20:00'))
+
 ?>
 <div class="uk-scope">
     <div class="uk-width-1-1 uk-margin uk-position-relative nx-extension nx-list-of-notars">
@@ -82,11 +84,11 @@ $simpleTemplates = array('title','firstname','lastname','street','birthday_year'
     <?php if($params->get('responsive_table',1)):?>
         </div>
     <?php endif;?>
-    <?php if($params->get('show_lastupdated',1)):?>
-        <div class="uk-width-1-1 uk-text-center">
-            <span class="uk-text-meta nx-footer-text"><?php echo $lastChangeText;?></span>
-        </div>
-    <?php endif;?>
+        <?php if($params->get('show_lastupdated',1)):?>
+            <div class="uk-width-1-1 uk-text-center">
+                <span class="uk-text-meta nx-footer-text"><?php echo text::sprintf('MOD_NM_TXT_LAST_CHANGED', htmlHelper::date($lastUpdatedDate, Text::_('DATE_FORMAT_LC4')));?></span>
+            </div>
+        <?php endif;?>
     </div>
 </div>
 

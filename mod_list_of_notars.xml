@@ -89,13 +89,10 @@
 					<option value="0">JNO</option>
 					<option value="1">JYES</option>
 				</field>
-				<field name="last_updated_txt"
+				<field name="last_updated_date"
 					   showon="show_lastupdated:1"
-					   type="text"
-					   default="Last updated: %date"
-					   hint="Last updated: %date"
-					   filter="safehtml"
-					   label="MOD_LON_SHOWLAST_UPDATED_TXT" description="MOD_LON_SHOWLAST_UPDATED_TXT_DES"
+					   type="calendar"
+					   label="MOD_LON_SHOWLAST_UPDATED_DATE" description="MOD_LON_SHOWLAST_UPDATED_DATE_DES"
 				/>
 				<field name="responsive_table"
 					   type="list"

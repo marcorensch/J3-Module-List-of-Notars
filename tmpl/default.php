@@ -10,6 +10,7 @@
 
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\Date\Date;
 
 defined('_JEXEC') or die;
 
@@ -86,7 +87,7 @@ $lastUpdatedDate = new Date($params->get('last_updated_date','2012-12-1 15:20:00
     <?php endif;?>
         <?php if($params->get('show_lastupdated',1)):?>
             <div class="uk-width-1-1 uk-text-center">
-                <span class="uk-text-meta nx-footer-text"><?php echo text::sprintf('MOD_NM_TXT_LAST_CHANGED', htmlHelper::date($lastUpdatedDate, Text::_('DATE_FORMAT_LC4')));?></span>
+                <span class="uk-text-meta nx-footer-text"><?php echo text::sprintf('MOD_LON_FE_TXT_LAST_CHANGED', htmlHelper::date($lastUpdatedDate, Text::_('DATE_FORMAT_LC4')));?></span>
             </div>
         <?php endif;?>
     </div>

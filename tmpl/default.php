@@ -9,6 +9,7 @@
  */
 
 use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Language\Text;
 
 defined('_JEXEC') or die;
 
@@ -42,7 +43,12 @@ $simpleTemplates = array('title','firstname','lastname','street','birthday_year'
                         ?>
 
                         <th <?php echo $onclick;?> class="noselect <?php echo htmlspecialchars($column->col_cls);?>">
-                            <?php echo htmlspecialchars($column->column_title);?>
+                            <?php
+                            $key = strtoupper(htmlspecialchars($column->column_title));
+                            $value = Text::_($key);
+                            $label = $key !== $value ? $value : htmlspecialchars($column->column_title);
+                            echo $label;
+                            ?>
                         </th>
 
                         <?php
